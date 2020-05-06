@@ -1,16 +1,16 @@
 /*
 德州扑克
 牌型示例
-Royal flush: ['♦️A','♦️K','♦️Q','♦️J','♦️10']
-Straight flush: ['♣️8','♣️7','♣️6','♣️5','♣️4']
-Four of a kind: ['♠️J','♥️J','♣️J','♦️J','♣️6']
-Three of a kind with a pair:  ['♠️J','♥️J','♣️J','♣️6','♦️6']
-Flush: ['♠️2','♠️8','♠️9','♠️10','♠️J']
-Straight: ['♥️8','♣️7','♦️6','♠️5','♠️4']
-Three of a kind: ['♠️J','♥️J','♣️J','♣️6','♦️5']
-Two pair: ['♠️J','♥️J','♣️6','♣️6','♦️5']
-One pair: ['♠️J','♥️J','♣️7','♣️6','♦️5']
-High Card: ['♦️3','♣️J','♠️8','♥️5','♠️2']
+皇家同花顺 Royal flush: ['♦️A','♦️K','♦️Q','♦️J','♦️10'] 
+同花顺 Straight flush: ['♣️8','♣️7','♣️6','♣️5','♣️4'] 
+四条 Four of a kind: ['♠️J','♥️J','♣️J','♦️J','♣️6'] 
+葫芦 Three of a kind with a pair:  ['♠️J','♥️J','♣️J','♣️6','♦️6'] 
+同花 Flush: ['♠️2','♠️8','♠️9','♠️10','♠️J'] 
+顺子 Straight: ['♥️8','♣️7','♦️6','♠️5','♠️4']
+三条 Three of a kind: ['♠️J','♥️J','♣️J','♣️6','♦️5']
+两对 Two pair: ['♠️J','♥️J','♣️6','♣️6','♦️5']
+一对 One pair: ['♠️J','♥️J','♣️7','♣️6','♦️5']
+散牌 High Card: ['♦️3','♣️J','♠️8','♥️5','♠️2']
 */
 
 const suit = ['♠️','♥️','♣️','♦️']
@@ -34,8 +34,8 @@ const map = {
 }
 const cards = []
 function generate52Cards(){
-  for(let i=0;i<suit.length;i++){
-    for(let j=0;j<values.length;j++){
+  for(let i=0; i<suit.length; i++){
+    for(let j=0; j<values.length; j++){
       let card = suit[i]+" "+values[j]
       cards.push(card)
     }
@@ -46,7 +46,7 @@ generate52Cards() // 生成52张牌
 
 function get5Cards(){  // 随机取5张牌
   let temp =[]
-  for(let i=0;i<5;i++){
+  for(let i=0; i<5; i++){
     const randomIndex =  Math.floor(Math.random()*cards.length)
     const randomValue = cards.splice(randomIndex,1)
     temp.push(...randomValue)
@@ -124,21 +124,21 @@ function calCardRank(info){
 }
 
 function compareCardSize(player,computer){
-  console.log("你的牌型是 " + map[calCardRank(player)])
+  console.log("玩家的牌型是 " + map[calCardRank(player)])
   console.log("电脑的牌型是 " + map[calCardRank(computer)])
   if(calCardRank(player)>calCardRank(computer)){
-    return console.log('你赢了')
+    return console.log('玩家赢了')
   }else if(calCardRank(player)<calCardRank(computer)){
-    return console.log('你输了')
+    return console.log('玩家输了')
   }else{
-    console.log('你和电脑的牌型相同')
+    console.log('玩家和电脑的牌型相同')
     console.log('现在进入最终对决......')
     setTimeout(function(){
       for(let i=0;i<computer.number.length;i++){
         if(player.number[i]>computer.number[i]){
-          return console.log('你赢了')
+          return console.log('玩家赢了')
         }else if(player.number[i]<computer.number[i]){
-          return console.log('你输了')
+          return console.log('玩家输了')
         }
       }
       console.log('平局')
@@ -146,6 +146,6 @@ function compareCardSize(player,computer){
   }
 }
 
-console.log("你的手牌是 " + player.join(" "))
+console.log("玩家的手牌是 " + player.join(" "))
 console.log("电脑的手牌是 " + computer.join(" "))
 compareCardSize(playerInfo,computerInfo)
