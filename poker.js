@@ -135,17 +135,17 @@ function compareCardSize(player,computer){
   console.log("玩家的牌型是 " + Map[calCardRank(player)])
   console.log("电脑的牌型是 " + Map[calCardRank(computer)])
   if(calCardRank(player)>calCardRank(computer)){
-    return console.log('玩家赢了')
+    console.log('玩家赢了')
   }else if(calCardRank(player)<calCardRank(computer)){
-    return console.log('玩家输了')
+    console.log('玩家输了')
   }else{
     console.log('玩家和电脑的牌型相同')
     console.log('现在进入最终对决......')
     setTimeout(function(){
       for(let i=0;i<computer.cards.length;i++){
-				console.log(`第${i+1}轮PK`)
-				console.log('玩家的手牌为'+ player.cards[i].color+" "+player.cards[i].value)
-				console.log('电脑的手牌为'+ computer.cards[i].color+" "+computer.cards[i].value)
+	console.log(`第${i+1}轮PK`)
+	console.log('玩家的手牌为'+ player.cards[i].color+" "+player.cards[i].value)
+	console.log('电脑的手牌为'+ computer.cards[i].color+" "+computer.cards[i].value)
         if(player.cards[i].number > computer.cards[i].number){
           return console.log('玩家赢了')
         }else if(player.cards[i].number < computer.cards[i].number){
